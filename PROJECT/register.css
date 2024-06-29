@@ -40,7 +40,8 @@ body {
     margin: 20px 0;
 }
 
-.input-box input {
+.input-box input,
+.input-box label {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -51,6 +52,26 @@ body {
     font-size: 16px;
     color: white;
     padding: 20px 45px 20px 20px;
+}
+
+.input-box input[type="checkbox"] {
+    width: auto;
+    height: auto;
+    margin: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.input-box.terms {
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.input-box label {
+    border: none;
+    padding: 10px;
+    font-size: 14px;
 }
 
 .input-box input::placeholder {
@@ -64,6 +85,13 @@ body {
     transform: translateY(-50%);
     font-size: 20px;
     cursor: pointer;
+}
+
+.input-box span {
+    display: block;
+    text-align: right;
+    color: white;
+    font-size: 14px;
 }
 
 .wrapper .btn {
@@ -95,3 +123,17 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+.input-box .terms {
+    display: flex;
+    align-items: center;
+    padding: 0; /* Remove padding or reduce it */
+    height: 30px; /* Adjust the height to make it smaller */
+}
+
+.input-box label {
+    border: none;
+    padding: 5px; /* Adjust the padding for the text inside the box */
+    font-size: 12px; /* Optionally, adjust the font size */
+}
+
