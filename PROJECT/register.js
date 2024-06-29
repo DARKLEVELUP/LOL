@@ -5,6 +5,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
+    const terms = document.getElementById('terms').checked;
 
     // Simple validation
     if (username === '' || email === '' || password === '' || confirmPassword === '') {
@@ -14,6 +15,11 @@ document.getElementById('registerForm').addEventListener('submit', async functio
 
     if (password !== confirmPassword) {
         alert('Passwords do not match.');
+        return;
+    }
+
+    if (!terms) {
+        alert('You must agree to the terms and conditions.');
         return;
     }
 
@@ -60,3 +66,29 @@ document.querySelectorAll('.toggle-password').forEach(item => {
         }
     });
 });
+
+// Password strength checker
+document.getElementById('password').addEventListener('input', function() {
+    const password = this.value;
+    const strength = checkPasswordStrength(password);
+    document.getElementById('passwordStrength').textContent = strength;
+});
+
+function checkPasswordStrength(password) {
+    if (password.length < 6) {
+        return 'Weak';
+    } else if (password.length >= 6 && password.length < 10) {
+        return 'Medium';
+    } else {
+        return 'Strong';
+    }
+}
+
+// Initialize CAPTCHA (use any CAPTCHA library or service you prefer)
+// Example: Google reCAPTCHA v2
+function loadCaptcha() {
+    const captchaContainer = document.getElementById('captchaContainer');
+    captchaContainer.innerHTML = '<div class="g-recaptcha" data-sitekey="your-site-key"></div>';
+    // Ensure you include the reCAPTCHA script in your HTML
+}
+loadCaptcha();
